@@ -1,4 +1,4 @@
-# cFS Fuzzer with LLM
+# LLMFuzz-cFS (cFS Fuzzer with LLM)
 
 A comprehensive fuzzing infrastructure for NASA's Core Flight System (cFS) enhanced with Large Language Model (LLM) capabilities for intelligent test case generation and security vulnerability discovery.
 
@@ -207,17 +207,6 @@ This project is built on NASA's Core Flight System:
 ## License
 
 This fuzzing infrastructure follows the same Apache 2.0 license as the underlying cFS framework. See the cFS repository for complete license information.
-
-## Contact & Support
-
-For questions about the fuzzing infrastructure:
-- Create GitHub issues for bug reports
-- Use discussions for questions and ideas
-
-For cFS framework support:
-- Email: cfs-program@lists.nasa.gov
-- Website: https://cfs.gsfc.nasa.gov
-- Community: cfs-community@lists.nasa.gov
 
 ---
 
