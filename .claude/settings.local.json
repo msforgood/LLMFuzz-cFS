@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude doctor)",
+      "Bash(./cs_fuzz:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

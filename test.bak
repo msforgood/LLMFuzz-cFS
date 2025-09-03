@@ -1,0 +1,15 @@
+git clone  https://github.com/nasa/CF.git apps/cf
+git clone  https://github.com/nasa/DS.git apps/ds
+git clone  https://github.com/nasa/CS.git apps/cs
+git clone  https://github.com/nasa/FM.git apps/fm
+
+git clone -b cf https://github.com/OUYA77/cFS_Fuzzer.git apps/cf/fuzz
+git clone -b ds https://github.com/OUYA77/cFS_Fuzzer.git apps/ds/fuzz
+git clone -b cs https://github.com/OUYA77/cFS_Fuzzer.git apps/cs/fuzz
+git clone -b fm https://github.com/OUYA77/cFS_Fuzzer.git apps/fm/fuzz
+
+sed -i '/list(APPEND MISSION_GLOBAL_APPLIST sample/ a list(APPEND MISSION_GLOBAL_APPLIST cf' sample_defs/targets.cmake
+sed -i '/CFE_APP, sch_lab/ a CFE_APP, cf        CF_AppMain,      cf        90,    8192, 0x0, 0;' sample_defs/cpu1_cfe_es_startup.scr
+
+
+minseo@ubuntu:~/claude-mcp/cFS/apps/ds/fuzz/build$ ./ds_fuzz 

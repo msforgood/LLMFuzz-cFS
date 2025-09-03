@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Bash(git:*)",
+      "Bash(cd apps/*/fuzz/build && make:*)",
+      "Bash(make:*)",
+      "Bash(cmake:*)",
+      "Bash(./*_fuzz:*)"    ],
+    "deny": [],
+    "ask": []
+  }
+}
