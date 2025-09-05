@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(claude doctor)",
-      "Bash(./cs_fuzz:*)"
+      "Bash(./cs_fuzz:*)",
+      "Bash(echo \"Created branch: $BRANCH\")",
+      "Bash(timeout:*)",
+      "Bash(SPEC=~/claude-mcp/cFS/apps/cs/fuzz/src/spec/CS_CancelOneShotCmd_spec.json)",
+      "Bash(HARNESS=~/claude-mcp/cFS/apps/cs/fuzz/src/cs_construct_packet.c)",
+      "Bash(FUZZ=~/claude-mcp/cFS/apps/cs/fuzz/src/cs_fuzz.c)",
+      "Bash(CMAKE=~/claude-mcp/cFS/apps/cs/fuzz/CMakeLists.txt)",
+      "Bash(MSG=\"feat(fuzz-cs): CS_CancelOneShotCmd construct_packet & spec (FC=3)\")"
     ],
     "deny": [],
     "ask": []

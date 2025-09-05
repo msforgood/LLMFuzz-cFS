@@ -2,11 +2,16 @@
   "permissions": {
     "allow": [
       "Edit",
+      "Write",
       "Bash(git:*)",
       "Bash(cd apps/*/fuzz/build && make:*)",
       "Bash(make:*)",
       "Bash(cmake:*)",
-      "Bash(./*_fuzz:*)"    ],
+      "Bash(./*_fuzz:*)",
+      "Bash(echo \"Created branch: $BRANCH\")",
+    
+    
+    ],
     "deny": [],
     "ask": []
   }

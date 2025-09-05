@@ -30,9 +30,10 @@ cd ~/claude-mcp/cFS/apps/{앱}/fuzz
 git fetch origin
 git checkout {앱}
 git pull --rebase origin {앱}
-```
 
-* `{앱}` 브랜치가 없다면 `origin/{앱}`에서 새로 만들고 최신화한다.
+BRANCH="fuzz/{앱}/{함수}-fc{fc}-$(date -u +%Y%m%d-%H%M%S)"
+git switch -c "$BRANCH"
+```
 
 ## 2) 타겟 함수 확인
 
@@ -73,6 +74,9 @@ git pull --rebase origin {앱}
 * `validation_spec`을 반영해 조기 return 조건(경계 부족, 정렬 불일치 등) 추가.
 * FC를 포함한 호출 코드로 실제 타겟 함수를 단일 호출 또는 소량 시나리오로 exercise.
 
+헤더 선언은 `~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.h`에만 작성.
+`~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_fuzz.c`에는 하니스 함수 선언 금지.
+
 멀티 함수 셀렉터(랜덤 디스패치) — 예시: ds_fuzz.c
 
 * 입력의 첫 바이트(Data[0])를 결정적 셀렉터로 사용해 여러 *_ConstructPacket 중 하나를 선택한다.
@@ -100,12 +104,10 @@ make -j$(nproc)
 작동하지 않으면 이유를 찾고 작동하도록 수정.
 
 
-## 8) Git 반영
+## 8) Git 커밋, 푸시
 
 * 작업 디렉터리: 리포지토리 루트 또는 `~/claude-mcp/cFS/apps/{앱}/fuzz` 어디에서 실행해도 동작하도록 작성.
 * 기준 브랜치: `{앱}`.
-* 변경 파일 보호: **허용된 3개 파일만** 스테이징/커밋.
-* 새 브랜치로 푸시: **main에 직접 푸시 금지**.
 * 커밋 메시지 규칙: `feat(fuzz-{앱}): {함수} construct_packet & spec (FC={fc})`
 
 ### 변수 예시
@@ -116,27 +118,7 @@ make -j$(nproc)
 
 ---
 
-### 1) 브랜치 최신화 (앱 브랜치 기준)
-
-```bash
-cd ~/claude-mcp/cFS/apps/{앱}/fuzz
-git fetch origin
-git checkout {앱}
-git pull --rebase origin {앱}
-```
-
-* 앱 브랜치가 없다면 `git checkout -b {앱} origin/{앱}`(원격에 있으면) 또는 `main`에서 분기해도 됩니다.
-
-### 2) 작업 브랜치 만들기
-
-```bash
-BRANCH="fuzz/{앱}/{함수}-fc{fc}-$(date -u +%Y%m%d-%H%M%S)"
-git switch -c "$BRANCH"
-```
-
-* 규칙: `fuzz/{앱}/{함수}-fc{fc}-타임스탬프`
-
-### 3) 변경 파일만 스테이징
+### 1) 변경 파일만 스테이징
 
 ```bash
 SPEC=~/claude-mcp/cFS/apps/{앱}/fuzz/src/spec/{함수}_spec.json
@@ -146,7 +128,7 @@ CMAKE=~/claude-mcp/cFS/apps/{앱}/fuzz/CMakeLists.txt
 git add "$SPEC" "$HARNESS" "$CMAKE"
 ```
 
-### 4) 커밋 (메시지 템플릿)
+### 2) 커밋 (메시지 템플릿)
 
 ```bash
 MSG="feat(fuzz-{앱}): {함수} construct_packet & spec (FC={fc})"
@@ -156,7 +138,7 @@ git commit -m "$MSG" \
   -m "- cmake: $CMAKE"
 ```
 
-### 5) 푸시 (항상 새 브랜치)
+### 3) 푸시 (항상 새 브랜치)
 
 ```bash
 git push -u origin "$BRANCH"
@@ -244,3 +226,9 @@ make -j$(nproc)
 - cFS initialization stubbing for isolated testing
 - Strict file modification limits for fuzzing work
 - Function code (FC) mapping from command specifications
+
+
+---
+
+
+Authored-By: Minseo Kim <mskim.link@gmail.com>
