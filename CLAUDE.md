@@ -69,16 +69,33 @@ git switch -c "$BRANCH"
 
 ### `~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.c`
 
+하니스 규칙
 * `LLVMFuzzerTestOneInput(uint8_t* data, size_t size)` 구현.
 * 입력 바이트를 `spec.json`의 `struct_spec`에 맞춰 패킷을 구성.
 * `validation_spec`을 반영해 조기 return 조건(경계 부족, 정렬 불일치 등) 추가.
 * FC를 포함한 호출 코드로 실제 타겟 함수를 단일 호출 또는 소량 시나리오로 exercise.
+* 추가 지시: 단순히 spec.json 구조체 필드를 매핑하는 것에 그치지 말고, context 기반 코드 커버리지의 depth를 최대화할 수 있도록 함수 문맥을 고려해 분기를 여는 입력을 직접 생성·주입하라. 다양한 입력 조건·시나리오(권한 비트, 정수 범위, 체크섬 일치/불일치, 리소스 존재/부재, 경계값, 정렬 위반, 문자열 경계, 시퀀스·상태 전이 등)를 구현하고 입력에서 결정되게 하라.
 
-헤더 선언은 `~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.h`에만 작성.
-`~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_fuzz.c`에는 하니스 함수 선언 금지.
+선언 위치
+* 생성기 선언은 ~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.h에만 작성.
+* {앱}_fuzz.c에는 하니스 관련 함수 선언 금지.
+
+초기화 의존
+* ~/claude-mcp/cFS/apps/ds/fuzz/dummy_bsp.c
+* ~/claude-mcp/cFS/apps/ds/fuzz/dummy_psp_module_list.c
+* LLVMFuzzerTestOneInput 내 init 블록 삭제 금지.
+
+멀티 생성기·앱별 엔트리 파이프
+* 입력 첫 바이트를 결정적 셀렉터로 사용해 여러 생성기 중 하나를 선택.
+* rand 사용 금지(재현성).
+* 엔트리 파이프는 앱마다 다르므로 매크로 한 줄로 바꿔 끼운다.
+
+하니스 규칙
+정수 - min,max 값 선정 or switch 문으로 사용되는 변수면 해당 scope 에 있는 숫자만 할당
+문자열 - 무언가를 찾고 load하는거면 유효한 파일이름 or 심볼이름 넣어주기, 생성하는거면 random 값도 가능
+위 예시와 같이 코드 커버리지 depth를 키우기 위해 context에 더 적절하게 다양한 input 조건을 추가.
 
 멀티 함수 셀렉터(랜덤 디스패치) — 예시: ds_fuzz.c
-
 * 입력의 첫 바이트(Data[0])를 결정적 셀렉터로 사용해 여러 *_ConstructPacket 중 하나를 선택한다.
 * 나머지 바이트(Data+1 ..)는 선택된 생성기의 페이로드로 전달한다.
 * 재현성을 위해 rand() 대신 입력 바이트만 사용한다(크래시 재현 용이).
@@ -88,6 +105,7 @@ git switch -c "$BRANCH"
 
 * fuzz 타깃 추가, 필요한 Sanitizer/LibFuzzer 플래그를 조건부 설정.
 
+* 두 의존 파일(dummy_bsp.c, dummy_psp_module_list.c)과 생성기/엔트리 파일을 타깃에 포함.
 
 ## 7) 동작 테스트
 
