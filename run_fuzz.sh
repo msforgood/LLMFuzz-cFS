@@ -9,7 +9,7 @@ fi
 APP=$1
 
 # 해당 앱의 fuzz 디렉토리로 이동
-cd apps/$APP/fuzz || { echo "apps/$APP/fuzz 경로가 존재하지 않습니다."; exit 1; }
+cd cFS/apps/$APP/fuzz || { echo "apps/$APP/fuzz 경로가 존재하지 않습니다."; exit 1; }
 
 # build 디렉토리 생성 및 이동
 mkdir -p build

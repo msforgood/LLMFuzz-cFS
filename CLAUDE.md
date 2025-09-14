@@ -1,3 +1,10 @@
+# 수정 필요
+Task ID Not Active 분기문에서 저 내용이 활성화되지 않도록 input 조정 - ds, time, sb, evs에서 발생 중
+fm 에서는 1980-012-14:03:20.50234 FM App: Error registering for Event Services, RC = 0xC2000003
+1980-012-14:03:20.50235 FM App: Error registering for Event Services, RC = 0xC2000003
+1980-012-14:03:20.50236 FM App: Error registering for Event Services, RC = 0xC2000003
+1980-012-14:03:20.50236 FM App: Error registering for Event Services, RC = 0xC2000003
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -10,12 +17,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 퍼징 하니스의 타겟은 매 요청마다 (1)앱/(2)함수로 주어진다.
 
-변경 가능한 파일은 다음으로 제한한다.
-
-* `~/claude-mcp/cFS/apps/{앱}/fuzz/src/spec/{함수}_spec.json`
-* `~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.c`
-* `~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_fuzz.c`
-* `~/claude-mcp/cFS/apps/{앱}/fuzz/CMakeLists.txt`
+절대 파일을 삭제하지 않는다.
+DO NOT DELETE any file.
 
 # GOAL
 
@@ -26,13 +29,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 1) 타겟 앱 확인
 
 ```bash
-cd ~/claude-mcp/cFS/apps/{앱}/fuzz
+cd ~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz
 git fetch origin
 git checkout {앱}
 git pull --rebase origin {앱}
-
-BRANCH="fuzz/{앱}/{함수}-fc{fc}-$(date -u +%Y%m%d-%H%M%S)"
-git switch -c "$BRANCH"
 ```
 
 ## 2) 타겟 함수 확인
@@ -51,7 +51,7 @@ git switch -c "$BRANCH"
 
 ## 5) spec 문서화
 
-* `~/claude-mcp/cFS/apps/{앱}/fuzz/src/spec/{함수}_spec.json` 작성.
+* `~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/src/spec/{함수}_spec.json` 작성.
 * 예시:
 
 ```json
@@ -67,7 +67,7 @@ git switch -c "$BRANCH"
 
 ## 6) 하니스 구현
 
-### `~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.c`
+### `~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.c`
 
 하니스 규칙
 * `LLVMFuzzerTestOneInput(uint8_t* data, size_t size)` 구현.
@@ -77,12 +77,12 @@ git switch -c "$BRANCH"
 * 추가 지시: 단순히 spec.json 구조체 필드를 매핑하는 것에 그치지 말고, context 기반 코드 커버리지의 depth를 최대화할 수 있도록 함수 문맥을 고려해 분기를 여는 입력을 직접 생성·주입하라. 다양한 입력 조건·시나리오(권한 비트, 정수 범위, 체크섬 일치/불일치, 리소스 존재/부재, 경계값, 정렬 위반, 문자열 경계, 시퀀스·상태 전이 등)를 구현하고 입력에서 결정되게 하라.
 
 선언 위치
-* 생성기 선언은 ~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.h에만 작성.
+* 생성기 선언은 ~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.h에만 작성.
 * {앱}_fuzz.c에는 하니스 관련 함수 선언 금지.
 
 초기화 의존
-* ~/claude-mcp/cFS/apps/ds/fuzz/dummy_bsp.c
-* ~/claude-mcp/cFS/apps/ds/fuzz/dummy_psp_module_list.c
+* ~/LLMFuzz-cFS/cFS/apps/ds/fuzz/dummy_bsp.c
+* ~/LLMFuzz-cFS/cFS/apps/ds/fuzz/dummy_psp_module_list.c
 * LLVMFuzzerTestOneInput 내 init 블록 삭제 금지.
 
 멀티 생성기·앱별 엔트리 파이프
@@ -90,18 +90,13 @@ git switch -c "$BRANCH"
 * rand 사용 금지(재현성).
 * 엔트리 파이프는 앱마다 다르므로 매크로 한 줄로 바꿔 끼운다.
 
-하니스 규칙
-정수 - min,max 값 선정 or switch 문으로 사용되는 변수면 해당 scope 에 있는 숫자만 할당
-문자열 - 무언가를 찾고 load하는거면 유효한 파일이름 or 심볼이름 넣어주기, 생성하는거면 random 값도 가능
-위 예시와 같이 코드 커버리지 depth를 키우기 위해 context에 더 적절하게 다양한 input 조건을 추가.
-
 멀티 함수 셀렉터(랜덤 디스패치) — 예시: ds_fuzz.c
 * 입력의 첫 바이트(Data[0])를 결정적 셀렉터로 사용해 여러 *_ConstructPacket 중 하나를 선택한다.
 * 나머지 바이트(Data+1 ..)는 선택된 생성기의 페이로드로 전달한다.
 * 재현성을 위해 rand() 대신 입력 바이트만 사용한다(크래시 재현 용이).
 * 생성기 개수가 1보다 작으면 즉시 return 0.
 
-### `~/claude-mcp/cFS/apps/{앱}/fuzz/CMakeLists.txt`
+### `~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/CMakeLists.txt`
 
 * fuzz 타깃 추가, 필요한 Sanitizer/LibFuzzer 플래그를 조건부 설정.
 
@@ -124,7 +119,7 @@ make -j$(nproc)
 
 ## 8) Git 커밋, 푸시
 
-* 작업 디렉터리: 리포지토리 루트 또는 `~/claude-mcp/cFS/apps/{앱}/fuzz` 어디에서 실행해도 동작하도록 작성.
+* 작업 디렉터리: 리포지토리 루트 또는 `~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz` 어디에서 실행해도 동작하도록 작성.
 * 기준 브랜치: `{앱}`.
 * 커밋 메시지 규칙: `feat(fuzz-{앱}): {함수} construct_packet & spec (FC={fc})`
 
@@ -139,9 +134,9 @@ make -j$(nproc)
 ### 1) 변경 파일만 스테이징
 
 ```bash
-SPEC=~/claude-mcp/cFS/apps/{앱}/fuzz/src/spec/{함수}_spec.json
-HARNESS=~/claude-mcp/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.c
-CMAKE=~/claude-mcp/cFS/apps/{앱}/fuzz/CMakeLists.txt
+SPEC=~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/src/spec/{함수}_spec.json
+HARNESS=~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/src/{앱}_construct_packet.c
+CMAKE=~/LLMFuzz-cFS/cFS/apps/{앱}/fuzz/CMakeLists.txt
 
 git add "$SPEC" "$HARNESS" "$CMAKE"
 ```
@@ -159,24 +154,23 @@ git commit -m "$MSG" \
 ### 3) 푸시 (항상 새 브랜치)
 
 ```bash
-git push -u origin "$BRANCH"
+git push origin {app}
 ```
-
-* main에 직접 푸시 금지, force-push 금지
 
 ---
 
 ### 꼭 기억할 것
 
+* 하니스는 퍼징으로 **실행 가능해야 함**
 * 스펙(JSON)과 코드가 **불일치하면 안 됨** (필드/타입/경계)
 * PR의 **base 브랜치는 {앱}**
 * 추가 빌드 플래그/의존이 생기면 `CMakeLists.txt` 또는 커밋 본문에 간단히 남겨 두기
 
 # DO NOT
 
+* 파일 삭제 금지.
 * 허용 파일 외 수정/리팩터 금지.
 * `spec.json`과 불일치하는 필드/타입/경계 사용 금지.
-* main에 직접 푸시 금지, force-push 금지.
 
 # Architecture Overview
 
@@ -225,7 +219,7 @@ make lcov  # Generate coverage reports
 ### Fuzzing Harnesses
 ```bash
 # Build individual app fuzzer (requires Clang 14)
-cd ~/claude-mcp/cFS/apps/{app}/fuzz
+cd ~/LLMFuzz-cFS/cFS/apps/{app}/fuzz
 mkdir build && cd build
 cmake ..
 make -j$(nproc)
