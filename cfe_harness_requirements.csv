@@ -1,0 +1,83 @@
+Module,Function_Name,Function_Code,Header_File,Harness_Status,Priority,Notes
+ES,CFE_ES_NoopCmd,0,default_cfe_es_fcncodes.h,완료,완료,기본 harness 존재
+ES,CFE_ES_ResetCountersCmd,1,default_cfe_es_fcncodes.h,완료,완료,카운터 리셋
+ES,CFE_ES_RestartCmd,2,default_cfe_es_fcncodes.h,완료,완료,cFE 재시작
+ES,CFE_ES_StartAppCmd,4,default_cfe_es_fcncodes.h,완료,완료,앱 시작
+ES,CFE_ES_StopAppCmd,5,default_cfe_es_fcncodes.h,완료,완료,앱 중지
+ES,CFE_ES_RestartAppCmd,6,default_cfe_es_fcncodes.h,완료,완료,앱 재시작
+ES,CFE_ES_ReloadAppCmd,7,default_cfe_es_fcncodes.h,완료,완료,앱 재로드
+ES,CFE_ES_QueryOneCmd,8,default_cfe_es_fcncodes.h,완료,완료,단일 앱 조회
+ES,CFE_ES_QueryAllCmd,9,default_cfe_es_fcncodes.h,완료,완료,모든 앱 조회
+ES,CFE_ES_ClearSysLogCmd,10,default_cfe_es_fcncodes.h,완료,완료,시스템 로그 지우기
+ES,CFE_ES_WriteSysLogCmd,11,default_cfe_es_fcncodes.h,완료,완료,시스템 로그 쓰기
+ES,CFE_ES_ClearERLogCmd,12,default_cfe_es_fcncodes.h,완료,완료,에러 로그 지우기
+ES,CFE_ES_WriteERLogCmd,13,default_cfe_es_fcncodes.h,완료,완료,에러 로그 쓰기
+ES,CFE_ES_StartPerfDataCmd,14,default_cfe_es_fcncodes.h,완료,완료,성능 데이터 시작
+ES,CFE_ES_StopPerfDataCmd,15,default_cfe_es_fcncodes.h,완료,완료,성능 데이터 중지
+ES,CFE_ES_SetPerfFilterMaskCmd,16,default_cfe_es_fcncodes.h,완료,완료,성능 필터 마스크 설정
+ES,CFE_ES_SetPerfTriggerMaskCmd,17,default_cfe_es_fcncodes.h,완료,완료,성능 트리거 마스크 설정
+ES,CFE_ES_OverWriteSysLogCmd,18,default_cfe_es_fcncodes.h,완료,완료,시스템 로그 덮어쓰기
+ES,CFE_ES_ResetPRCountCmd,19,default_cfe_es_fcncodes.h,완료,완료,PR 카운트 리셋
+ES,CFE_ES_SetMaxPRCountCmd,20,default_cfe_es_fcncodes.h,완료,완료,최대 PR 카운트 설정
+ES,CFE_ES_DeleteCDSCmd,21,default_cfe_es_fcncodes.h,완료,완료,CDS 삭제
+ES,CFE_ES_SendMemPoolStatsCmd,22,default_cfe_es_fcncodes.h,완료,완료,메모리 풀 통계 전송
+ES,CFE_ES_DumpCDSRegistryCmd,23,default_cfe_es_fcncodes.h,완료,완료,CDS 레지스트리 덤프
+ES,CFE_ES_QueryAllTasksCmd,24,default_cfe_es_fcncodes.h,완료,완료,모든 태스크 조회
+EVS,CFE_EVS_NoopCmd,0,default_cfe_evs_fcncodes.h,완료,완료,기본 harness 존재
+EVS,CFE_EVS_ResetCountersCmd,1,default_cfe_evs_fcncodes.h,완료,완료,카운터 리셋
+EVS,CFE_EVS_EnableEventTypeCmd,2,default_cfe_evs_fcncodes.h,완료,완료,이벤트 타입 활성화
+EVS,CFE_EVS_DisableEventTypeCmd,3,default_cfe_evs_fcncodes.h,완료,완료,이벤트 타입 비활성화
+EVS,CFE_EVS_SetEventFormatModeCmd,4,default_cfe_evs_fcncodes.h,완료,완료,이벤트 포맷 모드 설정
+EVS,CFE_EVS_EnableAppEventTypeCmd,5,default_cfe_evs_fcncodes.h,완료,완료,앱 이벤트 타입 활성화
+EVS,CFE_EVS_DisableAppEventTypeCmd,6,default_cfe_evs_fcncodes.h,완료,완료,앱 이벤트 타입 비활성화
+EVS,CFE_EVS_EnableAppEventsCmd,7,default_cfe_evs_fcncodes.h,완료,완료,앱 이벤트 활성화
+EVS,CFE_EVS_DisableAppEventsCmd,8,default_cfe_evs_fcncodes.h,완료,완료,앱 이벤트 비활성화
+EVS,CFE_EVS_ResetAppCounterCmd,9,default_cfe_evs_fcncodes.h,완료,완료,앱 카운터 리셋
+EVS,CFE_EVS_SetFilterCmd,10,default_cfe_evs_fcncodes.h,완료,완료,필터 설정
+EVS,CFE_EVS_EnablePortsCmd,11,default_cfe_evs_fcncodes.h,완료,완료,포트 활성화
+EVS,CFE_EVS_DisablePortsCmd,12,default_cfe_evs_fcncodes.h,완료,완료,포트 비활성화
+EVS,CFE_EVS_ResetFilterCmd,13,default_cfe_evs_fcncodes.h,완료,완료,필터 리셋
+EVS,CFE_EVS_ResetAllFiltersCmd,14,default_cfe_evs_fcncodes.h,완료,완료,모든 필터 리셋
+EVS,CFE_EVS_AddEventFilterCmd,15,default_cfe_evs_fcncodes.h,완료,완료,이벤트 필터 추가
+EVS,CFE_EVS_DeleteEventFilterCmd,16,default_cfe_evs_fcncodes.h,완료,완료,이벤트 필터 삭제
+EVS,CFE_EVS_WriteAppDataFileCmd,17,default_cfe_evs_fcncodes.h,완료,완료,앱 데이터 파일 쓰기
+EVS,CFE_EVS_WriteLogDataFileCmd,18,default_cfe_evs_fcncodes.h,완료,완료,로그 데이터 파일 쓰기
+EVS,CFE_EVS_SetLogModeCmd,19,default_cfe_evs_fcncodes.h,완료,완료,로그 모드 설정
+EVS,CFE_EVS_ClearLogCmd,20,default_cfe_evs_fcncodes.h,완료,완료,로그 지우기
+SB,CFE_SB_NoopCmd,0,default_cfe_sb_fcncodes.h,완료,완료,기본 harness 존재
+SB,CFE_SB_ResetCountersCmd,1,default_cfe_sb_fcncodes.h,완료,완료,카운터 리셋
+SB,CFE_SB_SendSbStatsCmd,2,default_cfe_sb_fcncodes.h,완료,완료,SB 통계 전송
+SB,CFE_SB_WriteRoutingInfoCmd,3,default_cfe_sb_fcncodes.h,완료,완료,라우팅 정보 쓰기
+SB,CFE_SB_EnableRouteCmd,4,default_cfe_sb_fcncodes.h,완료,완료,경로 활성화
+SB,CFE_SB_DisableRouteCmd,5,default_cfe_sb_fcncodes.h,완료,완료,경로 비활성화
+SB,CFE_SB_WritePipeInfoCmd,7,default_cfe_sb_fcncodes.h,완료,완료,파이프 정보 쓰기
+SB,CFE_SB_WriteMapInfoCmd,8,default_cfe_sb_fcncodes.h,완료,완료,맵 정보 쓰기
+SB,CFE_SB_EnableSubReportingCmd,9,default_cfe_sb_fcncodes.h,완료,완료,구독 리포팅 활성화
+SB,CFE_SB_DisableSubReportingCmd,10,default_cfe_sb_fcncodes.h,완료,완료,구독 리포팅 비활성화
+SB,CFE_SB_SendPrevSubsCmd,11,default_cfe_sb_fcncodes.h,완료,완료,이전 구독 전송
+TBL,CFE_TBL_NoopCmd,0,default_cfe_tbl_fcncodes.h,완료,완료,기본 harness 존재
+TBL,CFE_TBL_ResetCountersCmd,1,default_cfe_tbl_fcncodes.h,완료,완료,카운터 리셋
+TBL,CFE_TBL_LoadCmd,2,default_cfe_tbl_fcncodes.h,완료,완료,테이블 로드
+TBL,CFE_TBL_DumpCmd,3,default_cfe_tbl_fcncodes.h,완료,완료,테이블 덤프
+TBL,CFE_TBL_ValidateCmd,4,default_cfe_tbl_fcncodes.h,완료,완료,테이블 검증
+TBL,CFE_TBL_ActivateCmd,5,default_cfe_tbl_fcncodes.h,완료,완료,테이블 활성화
+TBL,CFE_TBL_DumpRegistryCmd,6,default_cfe_tbl_fcncodes.h,완료,완료,레지스트리 덤프
+TBL,CFE_TBL_SendRegistryCmd,7,default_cfe_tbl_fcncodes.h,완료,완료,레지스트리 전송
+TBL,CFE_TBL_DeleteCDSCmd,8,default_cfe_tbl_fcncodes.h,완료,완료,CDS 삭제
+TBL,CFE_TBL_AbortLoadCmd,9,default_cfe_tbl_fcncodes.h,완료,완료,로드 중단
+TIME,CFE_TIME_NoopCmd,0,default_cfe_time_fcncodes.h,완료,완료,기본 harness 존재
+TIME,CFE_TIME_ResetCountersCmd,1,default_cfe_time_fcncodes.h,완료,완료,카운터 리셋
+TIME,CFE_TIME_SendDiagnosticCmd,2,default_cfe_time_fcncodes.h,완료,완료,진단 전송
+TIME,CFE_TIME_SetSourceCmd,3,default_cfe_time_fcncodes.h,완료,완료,시간 소스 설정
+TIME,CFE_TIME_SetStateCmd,4,default_cfe_time_fcncodes.h,완료,완료,시간 상태 설정
+TIME,CFE_TIME_AddDelayCmd,5,default_cfe_time_fcncodes.h,완료,완료,지연 추가
+TIME,CFE_TIME_SubDelayCmd,6,default_cfe_time_fcncodes.h,완료,완료,지연 제거
+TIME,CFE_TIME_SetTimeCmd,7,default_cfe_time_fcncodes.h,완료,완료,시간 설정
+TIME,CFE_TIME_SetMETCmd,8,default_cfe_time_fcncodes.h,완료,완료,MET 설정
+TIME,CFE_TIME_SetSTCFCmd,9,default_cfe_time_fcncodes.h,완료,완료,STCF 설정
+TIME,CFE_TIME_SetLeapSecondsCmd,10,default_cfe_time_fcncodes.h,완료,완료,윤초 설정
+TIME,CFE_TIME_AddAdjustCmd,11,default_cfe_time_fcncodes.h,완료,완료,조정 추가
+TIME,CFE_TIME_SubAdjustCmd,12,default_cfe_time_fcncodes.h,완료,완료,조정 제거
+TIME,CFE_TIME_AddOneHzAdjustmentCmd,13,default_cfe_time_fcncodes.h,완료,완료,1Hz 조정 추가
+TIME,CFE_TIME_SubOneHzAdjustmentCmd,14,default_cfe_time_fcncodes.h,완료,완료,1Hz 조정 제거
+TIME,CFE_TIME_SetSignalCmd,15,default_cfe_time_fcncodes.h,완료,완료,신호 설정
