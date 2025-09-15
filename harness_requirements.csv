@@ -1,0 +1,121 @@
+App,Function_Name,Function_Code,Header_File,Harness_Status,Priority,Notes
+CF,CF_NoopCmd,0,default_cf_fcncodes.h,완료,완료,기본 harness 존재
+CF,CF_ResetCountersCmd,1,default_cf_fcncodes.h,완료,완료,기본 harness 존재
+CF,CF_TxFileCmd,2,default_cf_fcncodes.h,완료,완료,파일 전송 기능
+CF,CF_PlaybackDirCmd,3,default_cf_fcncodes.h,완료,완료,디렉토리 재생
+CF,CF_FreezeCmd,4,default_cf_fcncodes.h,완료,완료,채널 동결
+CF,CF_ThawCmd,5,default_cf_fcncodes.h,완료,완료,채널 해제
+CF,CF_SuspendCmd,6,default_cf_fcncodes.h,완료,완료,트랜잭션 일시정지
+CF,CF_ResumeCmd,7,default_cf_fcncodes.h,완료,완료,트랜잭션 재개
+CF,CF_CancelCmd,8,default_cf_fcncodes.h,완료,완료,트랜잭션 취소
+CF,CF_AbandonCmd,9,default_cf_fcncodes.h,완료,완료,트랜잭션 포기
+CF,CF_SetParamCmd,10,default_cf_fcncodes.h,완료,완료,파라미터 설정
+CF,CF_GetParamCmd,11,default_cf_fcncodes.h,완료,완료,파라미터 조회
+CF,CF_WriteQueueCmd,15,default_cf_fcncodes.h,완료,완료,큐 쓰기
+CF,CF_EnableDequeueCmd,16,default_cf_fcncodes.h,완료,완료,큐 활성화
+CF,CF_DisableDequeueCmd,17,default_cf_fcncodes.h,완료,완료,큐 비활성화
+CF,CF_EnableDirPollingCmd,18,default_cf_fcncodes.h,완료,완료,디렉토리 폴링 활성화
+CF,CF_DisableDirPollingCmd,19,default_cf_fcncodes.h,완료,완료,디렉토리 폴링 비활성화
+CF,CF_PurgeQueueCmd,21,default_cf_fcncodes.h,완료,완료,큐 정리
+CF,CF_EnableEngineCmd,22,default_cf_fcncodes.h,완료,완료,엔진 활성화
+CF,CF_DisableEngineCmd,23,default_cf_fcncodes.h,완료,완료,엔진 비활성화
+CS,CS_NoopCmd,0,cs_msgdefs.h,완료,완료,기본 harness 존재
+CS,CS_ResetCmd,1,cs_msgdefs.h,완료,완료,카운터 리셋
+CS,CS_OneShotCmd,2,cs_msgdefs.h,완료,완료,원샷 체크섬
+CS,CS_CancelOneShotCmd,3,cs_msgdefs.h,완료,완료,원샷 취소
+CS,CS_EnableAllCSCmd,4,cs_msgdefs.h,완료,완료,전체 CS 활성화
+CS,CS_DisableAllCSCmd,5,cs_msgdefs.h,완료,완료,전체 CS 비활성화
+CS,CS_EnableCfeCoreCmd,6,cs_msgdefs.h,완료,완료,CFE 코어 CS 활성화
+CS,CS_DisableCfeCoreCmd,7,cs_msgdefs.h,완료,완료,CFE 코어 CS 비활성화
+CS,CS_ReportBaselineCfeCoreCmd,8,cs_msgdefs.h,필요,높음,CFE 코어 베이스라인 리포트
+CS,CS_RecomputeBaselineCfeCoreCmd,9,cs_msgdefs.h,필요,높음,CFE 코어 베이스라인 재계산
+CS,CS_EnableOSCmd,10,cs_msgdefs.h,필요,높음,OS CS 활성화
+CS,CS_DisableOSCmd,11,cs_msgdefs.h,필요,높음,OS CS 비활성화
+CS,CS_ReportBaselineOSCmd,12,cs_msgdefs.h,필요,높음,OS 베이스라인 리포트
+CS,CS_RecomputeBaselineOSCmd,13,cs_msgdefs.h,필요,높음,OS 베이스라인 재계산
+CS,CS_EnableEepromCmd,14,cs_msgdefs.h,필요,중간,EEPROM CS 활성화
+CS,CS_DisableEepromCmd,15,cs_msgdefs.h,필요,중간,EEPROM CS 비활성화
+CS,CS_ReportBaselineEepromCmd,16,cs_msgdefs.h,필요,중간,EEPROM 베이스라인 리포트
+CS,CS_RecomputeBaselineEepromCmd,17,cs_msgdefs.h,필요,중간,EEPROM 베이스라인 재계산
+CS,CS_EnableMemoryCmd,18,cs_msgdefs.h,필요,중간,메모리 CS 활성화
+CS,CS_DisableMemoryCmd,19,cs_msgdefs.h,필요,중간,메모리 CS 비활성화
+CS,CS_ReportBaselineMemoryCmd,20,cs_msgdefs.h,필요,중간,메모리 베이스라인 리포트
+CS,CS_RecomputeBaselineMemoryCmd,21,cs_msgdefs.h,필요,중간,메모리 베이스라인 재계산
+CS,CS_EnableTablesCmd,22,cs_msgdefs.h,필요,중간,테이블 CS 활성화
+CS,CS_DisableTablesCmd,23,cs_msgdefs.h,필요,중간,테이블 CS 비활성화
+CS,CS_ReportBaselineTablesCmd,24,cs_msgdefs.h,필요,중간,테이블 베이스라인 리포트
+CS,CS_RecomputeBaselineTablesCmd,25,cs_msgdefs.h,필요,중간,테이블 베이스라인 재계산
+CS,CS_EnableAppCmd,26,cs_msgdefs.h,필요,중간,앱 CS 활성화
+CS,CS_DisableAppCmd,27,cs_msgdefs.h,필요,중간,앱 CS 비활성화
+CS,CS_ReportBaselineAppCmd,28,cs_msgdefs.h,필요,중간,앱 베이스라인 리포트
+CS,CS_RecomputeBaselineAppCmd,29,cs_msgdefs.h,필요,중간,앱 베이스라인 재계산
+CS,CS_EnableNameEepromCmd,30,cs_msgdefs.h,필요,낮음,이름별 EEPROM CS 활성화
+CS,CS_DisableNameEepromCmd,31,cs_msgdefs.h,필요,낮음,이름별 EEPROM CS 비활성화
+CS,CS_EnableNameMemoryCmd,32,cs_msgdefs.h,필요,낮음,이름별 메모리 CS 활성화
+CS,CS_DisableNameMemoryCmd,33,cs_msgdefs.h,필요,낮음,이름별 메모리 CS 비활성화
+CS,CS_EnableNameTablesCmd,34,cs_msgdefs.h,필요,낮음,이름별 테이블 CS 활성화
+CS,CS_DisableNameTablesCmd,35,cs_msgdefs.h,필요,낮음,이름별 테이블 CS 비활성화
+CS,CS_EnableNameAppCmd,36,cs_msgdefs.h,필요,낮음,이름별 앱 CS 활성화
+CS,CS_DisableNameAppCmd,37,cs_msgdefs.h,필요,낮음,이름별 앱 CS 비활성화
+DS,DS_NoopCmd,0,ds_msgdefs.h,완료,완료,기본 harness 존재
+DS,DS_ResetCountersCmd,1,ds_msgdefs.h,완료,완료,카운터 리셋
+DS,DS_SetAppStateCmd,2,ds_msgdefs.h,완료,완료,앱 상태 설정
+DS,DS_SetFilterFileCmd,3,ds_msgdefs.h,완료,완료,필터 파일 설정
+DS,DS_SetFilterTypeCmd,4,ds_msgdefs.h,완료,완료,필터 타입 설정
+DS,DS_SetFilterParmsCmd,5,ds_msgdefs.h,완료,완료,필터 파라미터 설정
+DS,DS_SetDestTypeCmd,6,ds_msgdefs.h,완료,완료,목적지 타입 설정
+DS,DS_SetDestStateCmd,7,ds_msgdefs.h,필요,높음,목적지 상태 설정
+DS,DS_SetDestPathCmd,8,ds_msgdefs.h,필요,높음,목적지 경로 설정
+DS,DS_SetDestBaseCmd,9,ds_msgdefs.h,필요,높음,목적지 베이스 설정
+DS,DS_SetDestExtCmd,10,ds_msgdefs.h,필요,높음,목적지 확장자 설정
+DS,DS_SetDestSizeCmd,11,ds_msgdefs.h,필요,높음,목적지 크기 설정
+DS,DS_SetDestAgeCmd,12,ds_msgdefs.h,필요,높음,목적지 수명 설정
+DS,DS_SetDestCountCmd,13,ds_msgdefs.h,필요,중간,목적지 카운트 설정
+DS,DS_CloseFileCmd,14,ds_msgdefs.h,필요,높음,파일 닫기
+DS,DS_GetFileInfoCmd,15,ds_msgdefs.h,필요,중간,파일 정보 조회
+DS,DS_AddMidCmd,16,ds_msgdefs.h,필요,중간,MID 추가
+DS,DS_CloseAllCmd,17,ds_msgdefs.h,필요,높음,모든 파일 닫기
+FM,FM_NoopCmd,0,fm_msgdefs.h,완료,완료,기본 harness 존재
+FM,FM_ResetCountersCmd,1,fm_msgdefs.h,완료,완료,카운터 리셋
+FM,FM_CopyFileCmd,2,fm_msgdefs.h,완료,완료,파일 복사
+FM,FM_MoveFileCmd,3,fm_msgdefs.h,완료,완료,파일 이동
+FM,FM_RenameFileCmd,4,fm_msgdefs.h,완료,완료,파일 이름변경
+FM,FM_DeleteFileCmd,5,fm_msgdefs.h,완료,완료,파일 삭제
+FM,FM_DeleteAllFilesCmd,7,fm_msgdefs.h,완료,완료,모든 파일 삭제
+FM,FM_DecompressFileCmd,8,fm_msgdefs.h,완료,완료,파일 압축해제
+FM,FM_ConcatFilesCmd,9,fm_msgdefs.h,완료,완료,파일 연결
+FM,FM_GetFileInfoCmd,10,fm_msgdefs.h,필요,높음,파일 정보 조회
+FM,FM_GetOpenFilesCmd,11,fm_msgdefs.h,필요,중간,열린 파일 조회
+FM,FM_CreateDirectoryCmd,12,fm_msgdefs.h,필요,높음,디렉토리 생성
+FM,FM_DeleteDirectoryCmd,13,fm_msgdefs.h,필요,높음,디렉토리 삭제
+FM,FM_GetDirListFileCmd,14,fm_msgdefs.h,필요,중간,디렉토리 목록 파일 생성
+FM,FM_GetDirListPktCmd,15,fm_msgdefs.h,필요,중간,디렉토리 목록 패킷 생성
+FM,FM_MonitorFilesystemSpaceCmd,16,fm_msgdefs.h,필요,중간,파일시스템 공간 모니터링
+FM,FM_SetTableStateCmd,17,fm_msgdefs.h,필요,낮음,테이블 상태 설정
+FM,FM_SetPermissionsCmd,18,fm_msgdefs.h,필요,중간,권한 설정
+MM,MM_NoopCmd,0,mm_msgdefs.h,부분완료,높음,기본 인프라 존재
+MM,MM_ResetCmd,1,mm_msgdefs.h,부분완료,높음,카운터 리셋
+MM,MM_PeekCmd,2,mm_msgdefs.h,부분완료,높음,메모리 읽기
+MM,MM_PokeCmd,3,mm_msgdefs.h,부분완료,높음,메모리 쓰기
+MM,MM_LoadMemWIDCmd,4,mm_msgdefs.h,부분완료,높음,메모리 로드 (인터럽트 비활성화)
+MM,MM_LoadMemFromFileCmd,5,mm_msgdefs.h,부분완료,높음,파일에서 메모리 로드
+MM,MM_DumpMemToFileCmd,6,mm_msgdefs.h,부분완료,높음,메모리를 파일로 덤프
+MM,MM_DumpInEventCmd,7,mm_msgdefs.h,부분완료,중간,이벤트로 메모리 덤프
+MM,MM_FillMemCmd,8,mm_msgdefs.h,부분완료,높음,메모리 채우기
+MM,MM_LookupSymbolCmd,9,mm_msgdefs.h,부분완료,중간,심볼 조회
+MM,MM_SymTblToFileCmd,10,mm_msgdefs.h,부분완료,중간,심볼 테이블을 파일로
+MM,MM_EepromWriteEnaCmd,11,mm_msgdefs.h,부분완료,중간,EEPROM 쓰기 활성화
+MM,MM_EepromWriteDisCmd,12,mm_msgdefs.h,부분완료,중간,EEPROM 쓰기 비활성화
+CI_LAB,CI_LAB_NoopCmd,0,default_ci_lab_fcncodes.h,필요,중간,명령 수신 검증
+CI_LAB,CI_LAB_ResetCountersCmd,1,default_ci_lab_fcncodes.h,필요,중간,카운터 리셋
+TO_LAB,TO_LAB_NoopCmd,0,default_to_lab_fcncodes.h,필요,중간,텔레메트리 출력 검증
+TO_LAB,TO_LAB_ResetCountersCmd,1,default_to_lab_fcncodes.h,필요,중간,카운터 리셋
+TO_LAB,TO_LAB_AddPacketCmd,2,default_to_lab_fcncodes.h,필요,높음,패킷 추가
+TO_LAB,TO_LAB_SendDataTypesCmd,3,default_to_lab_fcncodes.h,필요,중간,데이터 타입 전송
+TO_LAB,TO_LAB_RemovePacketCmd,4,default_to_lab_fcncodes.h,필요,높음,패킷 제거
+TO_LAB,TO_LAB_RemoveAllCmd,5,default_to_lab_fcncodes.h,필요,중간,모든 패킷 제거
+TO_LAB,TO_LAB_EnableOutputCmd,6,default_to_lab_fcncodes.h,필요,높음,출력 활성화
+SAMPLE_APP,SAMPLE_APP_NoopCmd,0,default_sample_app_fcncodes.h,필요,낮음,예제 앱
+SAMPLE_APP,SAMPLE_APP_ResetCountersCmd,1,default_sample_app_fcncodes.h,필요,낮음,카운터 리셋
+SAMPLE_APP,SAMPLE_APP_ProcessCmd,2,default_sample_app_fcncodes.h,필요,낮음,처리 명령
+SAMPLE_APP,SAMPLE_APP_DisplayParamCmd,3,default_sample_app_fcncodes.h,필요,낮음,파라미터 표시
